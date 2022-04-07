@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Hello = () => {
+const Hello = () => {
   return (
     <React.Fragment>
       <h2 style={{ color: "red", backgroundColor: "green" }}>
@@ -12,3 +12,5 @@ export const Hello = () => {
     </> */ //Isto raboti
   );
 };
+
+export default Hello;
