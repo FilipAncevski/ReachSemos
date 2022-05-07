@@ -8,16 +8,22 @@ export const Input = ({
   onChange,
   name,
   setToggle,
+  renderTextArea,
+  changeInput,
 }) => {
   return (
     <p>
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        name={name}
-      />
+      {renderTextArea ? (
+        <textarea rows={8} cols={20} value={value} onChange={onChange} />
+      ) : (
+        <input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          name={name}
+        />
+      )}
       {name === "password" && (
         <button
           className="eye-button"
@@ -26,6 +32,13 @@ export const Input = ({
         >
           <i
             className={type === "password" ? "fa fa-eye-slash" : "fa fa-eye"}
+          ></i>
+        </button>
+      )}
+      {name === "comment" && (
+        <button type="button" onClick={changeInput} className="eye-button">
+          <i
+            className={renderTextArea ? "fa fa-comment-o" : "fa fa-comments-o"}
           ></i>
         </button>
       )}
@@ -40,4 +53,6 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   setToggle: PropTypes.func,
   name: PropTypes.string,
+  renderTextArea: PropTypes.bool,
+  changeInput: PropTypes.func,
 };
